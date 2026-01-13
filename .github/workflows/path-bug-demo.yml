@@ -1,0 +1,30 @@
+name: Path Bug Demo
+
+on:
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - "**"
+    paths:
+      - "**/ios/**" # This should only match contents of an /ios/ directory, but it seems to match *ios/** instead
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Github Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
+      - name: Show changed files
+        run: |
+          echo "=== Files changed in this push ==="
+          git diff --name-only HEAD~1 HEAD
