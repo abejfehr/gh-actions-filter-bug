@@ -8,3 +8,5 @@ Looking at the commits, this workflow also runs when the file `src/portfolios/de
 I posit that Github is treating `**/ios/**` as `*ios/**` instead and matching folders that end in "ios".
 
 You should also see that the demo is not triggered when the change is made to this README.md file.
+
+Here is the associated discussion thread in Github: https://github.com/orgs/community/discussions/184216
